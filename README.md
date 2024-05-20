@@ -5,11 +5,13 @@ This project demonstrates how to establish a connection between two Amazon EC2 i
 ## Setup
 
 1. **Create Two VPCs:**
+
    - Launch two VPCs, each with its own CIDR block:
      - VPC-A: 10.1.0.0/16
      - VPC-B: 10.2.0.0/16
 
 2. **Create Subnets:**
+
    - In each VPC, create subnets:
      - VPC-A:
        - Public Subnet: `PUBLIC-SUBNET-TORIQ-A`
@@ -18,12 +20,14 @@ This project demonstrates how to establish a connection between two Amazon EC2 i
        - Private Subnet: `PRIVATE-SUBNET-TORIQ-B`
 
 3. **Launch EC2 Instances:**
+
    - Launch three EC2 instances:
      - Instance A: In the public subnet of VPC-A, launch an instance that will act as a bastion server.
      - Instance B: In the private subnet of VPC-A, launch an instance that will host an Nginx server.
      - Instance C: In the private subnet of VPC-B, launch an instance from which we will try to access the Nginx server.
 
 4. **Configure Security Groups:**
+
    - Create security groups and configure rules to allow the necessary traffic:
      - **Bastion Server Security Group:**
        - Allow SSH access from your local machine.
@@ -33,12 +37,15 @@ This project demonstrates how to establish a connection between two Amazon EC2 i
        - Allow outbound traffic on port 80 (HTTP) to the private subnet of VPC-A.
 
 5. **Enable VPC Peering:**
+
    - Establish VPC peering between VPC-A and VPC-B. This allows communication between instances in the two VPCs.
 
 6. **Create NAT Gateway:**
+
    - Create a NAT Gateway in the public subnet of VPC-A to provide internet access for instances in the private subnet.
 
 7. **Install and Configure Nginx:**
+
    - On Instance B (the Nginx server), install and configure Nginx. Ensure the Nginx server is listening on port 80 and can serve a simple web page.
 
 8. **Test Connectivity:**
