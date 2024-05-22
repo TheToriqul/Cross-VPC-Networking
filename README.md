@@ -2,6 +2,16 @@
 
 This project demonstrates how to establish a connection between two Amazon EC2 instances residing in separate VPCs, with the addition of a NAT Gateway for internet access. The setup involves configuring an Nginx server on one instance in a private subnet, enabling communication from another EC2 instance in a different VPC's private subnet, and providing internet access through a NAT Gateway.
 
+## Project Diagram
+
+The diagram depicts the network topology with the addition of the NAT Gateway:
+
+<figure > 
+<p align="center">
+  <img src="./System_design.png" alt="project architecture" />
+</p>
+</figure>
+
 ## Setup
 
 1. **Create Two VPCs:**
@@ -30,7 +40,7 @@ This project demonstrates how to establish a connection between two Amazon EC2 i
 
    - Create security groups and configure rules to allow the necessary traffic:
      - **Bastion Server Security Group:**
-       - Allow SSH access from your local machine.
+       - Allow SSH access from local machine.
      - **Nginx Server Security Group:**
        - Allow inbound traffic on port 80 (HTTP) from the private subnet of VPC-B.
      - **Private Server Security Group:**
@@ -51,17 +61,8 @@ This project demonstrates how to establish a connection between two Amazon EC2 i
 8. **Test Connectivity:**
    - From Instance C (the private server in VPC-B), use `curl` to access the Nginx server on Instance B. You should be able to successfully retrieve the web page served by the Nginx server.
 
-## Diagram
 
-The diagram depicts the network topology with the addition of the NAT Gateway:
-
-<figure > 
-<p align="center">
-  <img src="./System_design.png" alt="project architecture" />
-</p>
-</figure>
-
-## Notes
+## Notes (If want to use it)
 
 - This setup demonstrates a basic cross-VPC connection. You may need to modify security groups, firewall rules, and other configurations depending on your specific requirements.
 - Ensure that you adhere to best practices for security and network management when working with VPC peering and cross-VPC communication. Consider implementing encryption and access controls for enhanced security.
