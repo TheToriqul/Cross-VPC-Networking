@@ -62,7 +62,7 @@ The diagram depicts the network topology with the addition of the NAT Gateway:
    - From Instance C (the private server in VPC-B), use `curl` to access the Nginx server on Instance B. You should be able to successfully retrieve the web page served by the Nginx server.
 
 
-## Notes (If want to use it)
+## Notes (If you want to use it)
 
 - This setup demonstrates a basic cross-VPC connection. You may need to modify security groups, firewall rules, and other configurations depending on your specific requirements.
 - Ensure that you adhere to best practices for security and network management when working with VPC peering and cross-VPC communication. Consider implementing encryption and access controls for enhanced security.
